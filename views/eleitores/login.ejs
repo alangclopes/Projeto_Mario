@@ -1,0 +1,10 @@
+<%- include('../partials/header', { title: 'Login de Eleitor' }) %>
+<h2>Login de Eleitor</h2>
+<form action="/eleitores/login" method="post">
+  <label for="cpf">CPF:</label>
+  <input type="text" id="cpf" name="cpf" required />
+  <label for="senha">Senha:</label>
+  <input type="password" id="senha" name="senha" required />
+  <button type="submit">Entrar</button>
+</form>
+<%- include('../partials/footer') %>

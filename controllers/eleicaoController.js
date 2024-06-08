@@ -11,7 +11,7 @@ exports.criar = (req, res) => {
 
 exports.salvar = async (req, res) => {
   const { data, local, nome } = req.body;
-  const eleicao = new Eleicao(data, local, nome);
-  await eleicao.save();
+  const novaEleicao = new Eleicao(data, local, nome);
+  await novaEleicao.save();
   res.redirect("/eleicoes");
 };

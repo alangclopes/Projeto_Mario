@@ -1,22 +1,20 @@
-const pool = require("../utils/database");
+const db = require("../config/db");
 
 class Candidato {
-  constructor(nome, cpf, endereco) {
-    this.nome = nome;
-    this.cpf = cpf;
-    this.endereco = endereco;
+  static getAll(callback) {
+    const sql = "SELECT * FROM Candidatos";
+    db.query(sql, (err, results) => {
+      if (err) throw err;
+      callback(results);
+    });
   }
 
-  static async findAll() {
-    const [rows] = await pool.query("SELECT * FROM Candidatos");
-    return rows;
-  }
-
-  async save() {
-    await pool.query(
-      "INSERT INTO Candidatos (nome, cpf, endereco) VALUES (?, ?, ?)",
-      [this.nome, this.cpf, this.endereco]
-    );
+  static create(data, callback) {
+    const sql = "INSERT INTO Candidatos SET ?";
+    db.query(sql, data, (err, results) => {
+      if (err) throw err;
+      callback(results);
+    });
   }
 }
 

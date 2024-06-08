@@ -1,0 +1,12 @@
+<%- include('../partials/header', { title: 'Lista de Eleições' }) %>
+<h2>Lista de Eleições</h2>
+<ul>
+  <% eleicoes.forEach(eleicao => { %>
+  <li>
+    <%= eleicao.nome %> - Data: <%= eleicao.data %> - Local: <%= eleicao.local
+    %>
+  </li>
+  <% }) %>
+</ul>
+<a href="/eleicoes/criar">Criar Nova Eleição</a>
+<%- include('../partials/footer') %>

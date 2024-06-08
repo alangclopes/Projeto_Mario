@@ -1,0 +1,10 @@
+<%- include('../partials/header', { title: 'Criar Cargo' }) %>
+<h2>Criar Cargo</h2>
+<form action="/cargos/criar" method="post">
+  <label for="cargo">Cargo:</label>
+  <input type="text" id="cargo" name="cargo" required />
+  <label for="eleicao_id">ID da Eleição:</label>
+  <input type="number" id="eleicao_id" name="eleicao_id" required />
+  <button type="submit">Salvar</button>
+</form>
+<%- include('../partials/footer') %>

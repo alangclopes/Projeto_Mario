@@ -1,0 +1,9 @@
+<%- include('../partials/header', { title: 'Lista de Cargos' }) %>
+<h2>Lista de Cargos</h2>
+<ul>
+  <% cargos.forEach(cargo => { %>
+    <li><%= cargo.cargo %> - Eleição ID: <%= cargo.eleicao_id %></li>
+  <% }) %>
+</ul>
+<a href="/cargos/criar">Criar Novo Cargo</a>
+<%- include('../partials/footer') %>

@@ -1,0 +1,14 @@
+<%- include('../partials/header', { title: 'Criar Eleitor' }) %>
+<h2>Criar Eleitor</h2>
+<form action="/eleitores/criar" method="post">
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" name="nome" required />
+  <label for="cpf">CPF:</label>
+  <input type="text" id="cpf" name="cpf" required />
+  <label for="endereco">Endereço:</label>
+  <input type="text" id="endereco" name="endereco" required />
+  <label for="senha">Senha:</label>
+  <input type="password" id="senha" name="senha" required />
+  <button type="submit">Salvar</button>
+</form>
+<%- include('../partials/footer') %>

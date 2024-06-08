@@ -1,17 +1,15 @@
+// controllers/candidatoController.js
 const Candidato = require("../models/candidato");
 
-exports.listar = async (req, res) => {
-  const candidatos = await Candidato.findAll();
-  res.render("candidatos/listar", { candidatos });
+exports.index = (req, res) => {
+  Candidato.getAll((results) => {
+    res.render("candidatos/index", { candidatos: results });
+  });
 };
 
-exports.criar = (req, res) => {
-  res.render("candidatos/criar");
-};
-
-exports.salvar = async (req, res) => {
-  const { nome, cpf, endereco } = req.body;
-  const candidato = new Candidato(nome, cpf, endereco);
-  await candidato.save();
-  res.redirect("/candidatos");
+exports.create = (req, res) => {
+  const data = req.body;
+  Candidato.create(data, (results) => {
+    res.redirect("/candidatos");
+  });
 };

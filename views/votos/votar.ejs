@@ -1,0 +1,10 @@
+<%- include('../partials/header', { title: 'Votação' }) %>
+<h2>Votação</h2>
+<form action="/votos/votar" method="post">
+  <label for="eleicaoId">ID da Eleição:</label>
+  <input type="text" id="eleicaoId" name="eleicaoId" required />
+  <label for="candidatoId">ID do Candidato:</label>
+  <input type="text" id="candidatoId" name="candidatoId" required />
+  <button type="submit">Votar</button>
+</form>
+<%- include('../partials/footer') %>

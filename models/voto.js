@@ -1,20 +1,24 @@
-const pool = require("../utils/database");
+const pool = require("../config/db");
 
 class Voto {
-  constructor(eleicao_id, candidato_id) {
-    this.eleicao_id = eleicao_id;
-    this.candidato_id = candidato_id;
+  constructor(eleicaoId, candidatoId, numeroVotos) {
+    this.eleicaoId = eleicaoId;
+    this.candidatoId = candidatoId;
+    this.numeroVotos = numeroVotos;
   }
 
-  static async findAll() {
-    const [rows] = await pool.query("SELECT * FROM Votos");
+  static async findByEleicao(eleicaoId) {
+    const [rows] = await pool.query(
+      "SELECT * FROM Votos WHERE eleicao_id = ?",
+      [eleicaoId]
+    );
     return rows;
   }
 
   async save() {
     await pool.query(
-      "INSERT INTO Votos (eleicao_id, candidato_id, numero_votos) VALUES (?, ?, 0)",
-      [this.eleicao_id, this.candidato_id]
+      "INSERT INTO Votos (eleicao_id, candidato_id, numero_votos) VALUES (?, ?, ?)",
+      [this.eleicaoId, this.candidatoId, this.numeroVotos]
     );
   }
 }

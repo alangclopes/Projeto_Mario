@@ -1,0 +1,10 @@
+<%- include('../partials/header', { title: 'Resultados da Eleição' }) %>
+<h2>Resultados da Eleição</h2>
+<ul>
+  <% votos.forEach(voto => { %>
+  <li>
+    Candidato ID: <%= voto.candidato_id %> - Votos: <%= voto.numero_votos %>
+  </li>
+  <% }) %>
+</ul>
+<%- include('../partials/footer') %>

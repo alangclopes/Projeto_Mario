@@ -1,0 +1,12 @@
+<%- include('../partials/header', { title: 'Relatórios de Finalização' }) %>
+<h2>Relatórios de Finalização</h2>
+<ul>
+  <% relatorios.forEach(relatorio => { %>
+  <li>
+    Eleição ID: <%= relatorio.eleicao_id %> - Data/Hora Fechamento: <%=
+    relatorio.data_hora_fechamento %> - Total Eleitores Votaram: <%=
+    relatorio.total_eleitores_votaram %>
+  </li>
+  <% }) %>
+</ul>
+<%- include('../partials/footer') %>

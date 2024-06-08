@@ -1,4 +1,4 @@
-const pool = require("../utils/database");
+const pool = require("../config/db");
 
 class Eleicao {
   constructor(data, local, nome) {
