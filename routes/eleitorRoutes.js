@@ -1,11 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const eleitorController = require('../controllers/eleitorController');
+const eleitorController = require("../controllers/eleitorController");
 
-router.get('/', eleitorController.listar);
-router.get('/criar', eleitorController.criar);
-router.post('/criar', eleitorController.salvar);
-router.get('/login', eleitorController.loginForm);
-router.post('/login', eleitorController.login);
+router.get("/", eleitorController.listarEleitores);
+router.post("/criar", eleitorController.criarEleitor);
 
 module.exports = router;

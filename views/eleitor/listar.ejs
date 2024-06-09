@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Eleitores</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h1>Lista de Eleitores</h1>
+    <ul>
+      <% eleitores.forEach(eleitor => { %>
+      <li>
+        <%= eleitor.nome %> - <%= eleitor.cpf %> - <%= eleitor.endereco %> - <%=
+        eleitor.liberado ? 'Liberado' : 'Não Liberado' %>
+      </li>
+      <% }) %>
+    </ul>
+    <h2>Criar Novo Eleitor</h2>
+    <form action="/eleitores/criar" method="post">
+      <input type="text" name="nome" placeholder="Nome" required />
+      <input type="text" name="cpf" placeholder="CPF" required />
+      <input type="text" name="endereco" placeholder="Endereço" required />
+      <input type="password" name="senha" placeholder="Senha" required />
+      <label for="liberado">Liberado:</label>
+      <input type="checkbox" name="liberado" />
+      <button type="submit">Criar</button>
+    </form>
+  </body>
+</html>

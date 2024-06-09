@@ -1,8 +1,8 @@
 const db = require("../config/db");
 
-class Eleitor {
+class Votacao {
   static getAll(callback) {
-    const sql = "SELECT * FROM Eleitores";
+    const sql = "SELECT * FROM Votacoes";
     db.query(sql, (err, results) => {
       if (err) throw err;
       callback(results);
@@ -10,7 +10,7 @@ class Eleitor {
   }
 
   static create(data, callback) {
-    const sql = "INSERT INTO Eleitores SET ?";
+    const sql = "INSERT INTO Votacoes SET ?";
     db.query(sql, data, (err, results) => {
       if (err) throw err;
       callback(results);
@@ -18,4 +18,4 @@ class Eleitor {
   }
 }
 
-module.exports = Eleitor;
+module.exports = Votacao;

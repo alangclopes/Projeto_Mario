@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Candidatos</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h1>Lista de Candidatos</h1>
+    <ul>
+      <% candidatos.forEach(candidato => { %>
+      <li>
+        <%= candidato.nome %> - <%= candidato.cpf %> - <%= candidato.endereco %>
+      </li>
+      <% }) %>
+    </ul>
+    <h2>Criar Novo Candidato</h2>
+    <form action="/candidatos/criar" method="post">
+      <input type="text" name="nome" placeholder="Nome" required />
+      <input type="text" name="cpf" placeholder="CPF" required />
+      <input type="text" name="endereco" placeholder="Endereço" required />
+      <button type="submit">Criar</button>
+    </form>
+  </body>
+</html>

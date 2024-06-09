@@ -1,9 +1,0 @@
-<%- include('../partials/header', { title: 'Lista de Chapas' }) %>
-<h2>Lista de Chapas</h2>
-<ul>
-  <% chapas.forEach(chapa => { %>
-    <li><%= chapa.nome %> - Eleição ID: <%= chapa.eleicao_id %></li>
-  <% }) %>
-</ul>
-<a href="/chapas/criar">Criar Nova Chapa</a>
-<%- include('../partials/footer') %>

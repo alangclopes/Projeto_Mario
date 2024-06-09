@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Votações</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h1>Lista de Votações</h1>
+    <ul>
+      <% votacoes.forEach(votacao => { %>
+      <li>
+        ID da Eleição: <%= votacao.eleicao_id %> - Data de Início: <%=
+        votacao.data_inicio %> - Data de Fim: <%= votacao.data_fim %>
+      </li>
+      <% }) %>
+    </ul>
+    <h2>Criar Nova Votação</h2>
+    <form action="/votacao/criar" method="post">
+      <input
+        type="text"
+        name="eleicao_id"
+        placeholder="ID da Eleição"
+        required
+      />
+      <input type="date" name="data_inicio" required />
+      <input type="date" name="data_fim" required />
+      <button type="submit">Criar</button>
+    </form>
+  </body>
+</html>
