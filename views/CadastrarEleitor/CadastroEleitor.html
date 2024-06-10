@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="mude.js"></script>
+</head>
+<body>
+    <header class="headerd">
+        <div class="textlogo">
+            <p class="logo">Vila</p>
+            <p class="logo verde">Verde</p>
+        </div>
+        <div class="linha"></div>
+    </header>
+    <main class="entradaInfos">
+        <p class="nomePagina">Cadastro de eleitor</p>
+        <form  method="post" action="">
+        <div class="form">
+            <div class="metadeForm"> 
+                <div class="info">
+                    <label for="Nome" class="label">Nome</label>
+                    <input type="text" id="Nome" placeholder="Digite seu nome completo">
+                </div>
+                 <div class="info">
+                     <label for="CPF" class="label">CPF</label>
+                     <input type="text" id="CPF" placeholder="Digite seu CPF completo" >
+                 </div>
+            </div>
+            <div class="metadeForm segunda">
+                <div class="info">
+                    <label for="Endereco" class="label">Endereço</label>
+                    <div class="groupSelect">
+                    <select id="categoria" name="categoria" required>
+                        <option value="" disabled selected>Predio</option>
+                        <option value="Predio">Predio 1</option>
+                        <option value="Predio">Predio 2</option>
+                        <option value="Predio">Predio 3</option>
+                        <option value="Predio">Predio 4</option>
+                    </select>
+                    <select id="categoria" name="Andar" required>
+                        <option value="" disabled selected>Andar</option>
+                        <option value="Andar">1° Andar</option>
+                        <option value="Andar">2° Andar</option>
+                        <option value="Andar">3° Andar</option>
+                        <option value="Andar">4° Andar</option>
+                        <option value="Andar">5° Andar</option>
+                        <option value="Andar">6° Andar</option>
+                    </select>
+                    <input id="categoria" type="number" placeholder="N°.Apt">
+                    </div>
+                </div>
+            <div class="info">
+                <label for="senha" class="labelEsp">Senha</label>
+                <div class="alinhamento">
+                    <input type="password" id="Senha" placeholder="Insira seu endereço">
+                    <i class="fas fa-eye-slash" id="toggleSenha" onclick="ViewPassword()"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="botaoDiv">
+            <div class="voltaDiv">
+                <button class="voltar">Voltar</button>
+            </div>
+            <div class="cadastraDiv">
+                <button class="cadastrar">Cadastrar Eleitor</button>
+                <p class="textoI">Ao cadastra-se você estará sujeito a nossos  Termos de eleição</p>
+            </div>
+        </div>
+        <div class="linha completa"></div>
+        </form>
+        </main>
+
+</body>
+</html>
