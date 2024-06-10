@@ -1,18 +1,20 @@
 const Candidato = require("../models/candidato");
 
-exports.listarCandidatos = (req, res) => {
-  Candidato.getAll((candidatos) => {
-    res.render("candidato/listar", { candidatos });
-  });
+exports.getAll = async (req, res) => {
+  try {
+    const candidatos = await Candidato.getAll();
+    res.render("candidato/index", { candidatos, eleitorId: 1 }); // Passar eleitorId como exemplo
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 };
 
-exports.criarCandidato = (req, res) => {
-  const candidato = {
-    nome: req.body.nome,
-    cpf: req.body.cpf,
-    endereco: req.body.endereco,
-  };
-  Candidato.create(candidato, () => {
+exports.create = async (req, res) => {
+  try {
+    const { nome, cpf, endereco } = req.body;
+    await Candidato.create({ nome, cpf, endereco });
     res.redirect("/candidatos");
-  });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 };

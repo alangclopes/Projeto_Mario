@@ -1,18 +1,11 @@
 const Votacao = require("../models/votacao");
 
-exports.listarVotacoes = (req, res) => {
-  Votacao.getAll((votacoes) => {
-    res.render("votacao/listar", { votacoes });
-  });
-};
-
-exports.criarVotacao = (req, res) => {
-  const votacao = {
-    eleicao_id: req.body.eleicao_id,
-    data_inicio: req.body.data_inicio,
-    data_fim: req.body.data_fim,
-  };
-  Votacao.create(votacao, () => {
-    res.redirect("/votacao");
-  });
+exports.votar = async (req, res) => {
+  try {
+    const { eleitorId, candidatoId } = req.body;
+    await Votacao.votar(eleitorId, candidatoId);
+    res.redirect("/candidatos");
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 };

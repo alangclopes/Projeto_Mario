@@ -1,20 +1,26 @@
 const db = require("../config/db");
 
 class Candidato {
-  static getAll(callback) {
-    const sql = "SELECT * FROM Candidatos";
-    db.query(sql, (err, results) => {
-      if (err) throw err;
-      callback(results);
-    });
+  static async getAll() {
+    try {
+      const [results] = await db.query("SELECT * FROM Candidatos");
+      return results;
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 
-  static create(data, callback) {
-    const sql = "INSERT INTO Candidatos SET ?";
-    db.query(sql, data, (err, results) => {
-      if (err) throw err;
-      callback(results);
-    });
+  static async create(candidato) {
+    try {
+      const { nome, cpf, endereco } = candidato;
+      const [result] = await db.query(
+        "INSERT INTO Candidatos (nome, cpf, endereco) VALUES (?, ?, ?)",
+        [nome, cpf, endereco]
+      );
+      return result.insertId;
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 }
 
