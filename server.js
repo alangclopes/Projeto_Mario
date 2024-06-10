@@ -5,6 +5,7 @@ const candidatoRoutes = require("./routes/candidatoRoutes");
 const eleitorRoutes = require("./routes/eleitorRoutes");
 const votacaoRoutes = require("./routes/votacaoRoutes");
 const authRoutes = require("./routes/authRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 const indexRoutes = require("./routes/indexRoutes");
 
 const app = express();
@@ -33,8 +34,9 @@ app.use((req, res, next) => {
 app.use("/", indexRoutes);
 app.use("/candidatos", candidatoRoutes);
 app.use("/eleitores", eleitorRoutes);
-app.use("/votacoes", votacaoRoutes);
+app.use("/votacoes", votacaoRoutes); // Certifique-se de que esta linha está presente
 app.use("/", authRoutes);
+app.use("/admin", adminRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
