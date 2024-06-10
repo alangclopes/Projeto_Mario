@@ -1,43 +1,51 @@
 const express = require("express");
-const session = require("express-session");
 const path = require("path");
-const candidatoRoutes = require("./routes/candidatoRoutes");
-const eleitorRoutes = require("./routes/eleitorRoutes");
-const votacaoRoutes = require("./routes/votacaoRoutes");
-const authRoutes = require("./routes/authRoutes");
-const adminRoutes = require("./routes/adminRoutes");
-const indexRoutes = require("./routes/indexRoutes");
-
+const session = require("express-session");
+const passport = require("passport");
 const app = express();
-const port = 3000;
 
-app.set("view engine", "ejs");
+// Configurar o view engine
 app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
-app.use(express.static(path.join(__dirname, "public")));
+// Middleware para analisar o corpo das requisições
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// Configurar sessão
 app.use(
   session({
-    secret: "your_secret_key",
+    secret: "secret",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
   })
 );
 
-app.use((req, res, next) => {
-  res.locals.user = req.session.userId
-    ? { id: req.session.userId, role: req.session.role }
-    : undefined;
-  next();
-});
+// Inicializar Passport.js
+app.use(passport.initialize());
+app.use(passport.session());
 
+// Configurar a pasta public para arquivos estáticos
+app.use(express.static(path.join(__dirname, "public")));
+
+// Importar as rotas
+const indexRoutes = require("./routes/indexRoutes");
+const authRoutes = require("./routes/authRoutes");
+const eleitorRoutes = require("./routes/eleitorRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const votacaoRoutes = require("./routes/votacaoRoutes");
+const candidatoRoutes = require("./routes/candidatoRoutes");
+
+// Usar as rotas
 app.use("/", indexRoutes);
-app.use("/candidatos", candidatoRoutes);
+app.use("/auth", authRoutes);
 app.use("/eleitores", eleitorRoutes);
-app.use("/votacoes", votacaoRoutes); // Certifique-se de que esta linha está presente
-app.use("/", authRoutes);
 app.use("/admin", adminRoutes);
+app.use("/votacao", votacaoRoutes);
+app.use("/candidatos", candidatoRoutes);
 
-app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+// Iniciar o servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });

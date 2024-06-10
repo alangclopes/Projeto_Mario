@@ -1,27 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lista de Eleitores</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-  </head>
-  <body>
-    <h1>Lista de Eleitores</h1>
-    <ul>
-      <% eleitores.forEach(eleitor => { %>
-      <li>
-        <%= eleitor.nome %> - <%= eleitor.cpf %> - <%= eleitor.endereco %>
-      </li>
-      <% }) %>
-    </ul>
-    <h2>Criar Novo Eleitor</h2>
-    <form action="/eleitores/criar" method="post">
-      <input type="text" name="nome" placeholder="Nome" required />
-      <input type="text" name="cpf" placeholder="CPF" required />
-      <input type="text" name="endereco" placeholder="Endereço" required />
-      <input type="password" name="senha" placeholder="Senha" required />
-      <button type="submit">Criar</button>
-    </form>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Eleitor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/mude.js"></script>
+</head>
+<body>
+    <header class="headerd">
+        <div class="textlogo">
+            <p class="logo">Vila</p>
+            <p class="logo verde">Verde</p>
+        </div>
+        <div class="linha"></div>
+    </header>
+    <main class="entradaInfos">
+        <p class="nomePagina">Cadastro de eleitor</p>
+        <form method="post" action="/eleitores/cadastrar">
+            <div class="form">
+                <div class="metadeForm"> 
+                    <div class="info">
+                        <label for="Nome" class="label">Nome</label>
+                        <input type="text" id="Nome" name="nome" placeholder="Digite seu nome completo" required>
+                    </div>
+                    <div class="info">
+                        <label for="CPF" class="label">CPF</label>
+                        <input type="text" id="CPF" name="cpf" placeholder="Digite seu CPF completo" required>
+                    </div>
+                </div>
+                <div class="metadeForm segunda">
+                    <div class="info">
+                        <label for="Endereco" class="label">Endereço</label>
+                        <div class="groupSelect">
+                            <select id="predio" name="predio" required>
+                                <option value="" disabled selected>Predio</option>
+                                <option value="Predio 1">Predio 1</option>
+                                <option value="Predio 2">Predio 2</option>
+                                <option value="Predio 3">Predio 3</option>
+                                <option value="Predio 4">Predio 4</option>
+                            </select>
+                            <select id="andar" name="andar" required>
+                                <option value="" disabled selected>Andar</option>
+                                <option value="1° Andar">1° Andar</option>
+                                <option value="2° Andar">2° Andar</option>
+                                <option value="3° Andar">3° Andar</option>
+                                <option value="4° Andar">4° Andar</option>
+                                <option value="5° Andar">5° Andar</option>
+                                <option value="6° Andar">6° Andar</option>
+                            </select>
+                            <input id="numero_apt" name="numero_apt" type="number" placeholder="N°.Apt" required>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <label for="Senha" class="labelEsp">Senha</label>
+                        <div class="alinhamento">
+                            <input type="password" id="Senha" name="senha" placeholder="Insira sua senha" required>
+                            <i class="fas fa-eye-slash" id="toggleSenha" onclick="ViewPassword()"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="botaoDiv">
+                <div class="voltaDiv">
+                    <button type="button" class="voltar" onclick="window.history.back();">Voltar</button>
+                </div>
+                <div class="cadastraDiv">
+                    <button type="submit" class="cadastrar">Cadastrar Eleitor</button>
+                    <p class="textoI">Ao cadastrar-se você estará sujeito aos nossos Termos de eleição</p>
+                </div>
+            </div>
+            <div class="linha completa"></div>
+        </form>
+    </main>
+</body>
 </html>

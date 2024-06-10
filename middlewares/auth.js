@@ -1,13 +1,20 @@
-module.exports.isAuthenticated = (req, res, next) => {
+function isAuthenticated(req, res, next) {
   if (req.session.userId) {
-    return next();
+    next();
+  } else {
+    res.redirect("/login");
   }
-  res.redirect("/login");
-};
+}
 
-module.exports.isAdmin = (req, res, next) => {
+function isAdmin(req, res, next) {
   if (req.session.role === "admin") {
-    return next();
+    next();
+  } else {
+    res.status(403).send("Acesso negado");
   }
-  res.status(403).send("Acesso negado");
+}
+
+module.exports = {
+  isAuthenticated,
+  isAdmin,
 };

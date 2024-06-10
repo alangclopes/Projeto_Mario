@@ -1,25 +1,28 @@
-const pool = require("../config/db");
-const bcrypt = require("bcrypt");
+const { Sequelize, DataTypes } = require("sequelize");
+const sequelize = require("../config/db");
 
-async function getAllEleitores() {
-  const [rows] = await pool.query("SELECT * FROM Eleitores");
-  return rows;
-}
+const Eleitor = sequelize.define("Eleitor", {
+  nome: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  cpf: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  endereco: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  senha: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  liberado: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
+});
 
-async function createEleitor(nome, cpf, endereco, senha) {
-  const hashedPassword = await bcrypt.hash(senha, 10);
-  const [userResult] = await pool.query(
-    "INSERT INTO Users (username, password, role) VALUES (?, ?, ?)",
-    [cpf, hashedPassword, "eleitor"]
-  );
-  const userId = userResult.insertId;
-  await pool.query(
-    "INSERT INTO Eleitores (nome, cpf, endereco, senha, user_id) VALUES (?, ?, ?, ?, ?)",
-    [nome, cpf, endereco, senha, userId]
-  );
-}
-
-module.exports = {
-  getAllEleitores,
-  createEleitor,
-};
+module.exports = Eleitor;
