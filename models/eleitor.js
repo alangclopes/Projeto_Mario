@@ -1,21 +1,15 @@
-const db = require("../config/db");
+const pool = require('../config/db');
 
-class Eleitor {
-  static getAll(callback) {
-    const sql = "SELECT * FROM Eleitores";
-    db.query(sql, (err, results) => {
-      if (err) throw err;
-      callback(results);
-    });
-  }
-
-  static create(data, callback) {
-    const sql = "INSERT INTO Eleitores SET ?";
-    db.query(sql, data, (err, results) => {
-      if (err) throw err;
-      callback(results);
-    });
-  }
+async function getAllEleitores() {
+  const [rows] = await pool.query('SELECT * FROM Eleitores');
+  return rows;
 }
 
-module.exports = Eleitor;
+async function createEleitor(nome, cpf, endereco, senha) {
+  await pool.query('INSERT INTO Eleitores (nome, cpf, endereco, senha) VALUES (?, ?, ?, ?)', [nome, cpf, endereco, senha]);
+}
+
+module.exports = {
+  getAllEleitores,
+  createEleitor
+};

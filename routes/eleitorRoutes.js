@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const eleitorController = require("../controllers/eleitorController");
+const { isAuthenticated, isAdmin } = require("../middlewares/auth");
 
-router.get("/", eleitorController.listarEleitores);
-router.post("/criar", eleitorController.criarEleitor);
+router.get("/", isAuthenticated, eleitorController.getAll);
+router.post("/criar", isAdmin, eleitorController.create);
 
 module.exports = router;

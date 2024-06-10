@@ -1,27 +1,18 @@
-const db = require("../config/db");
+const pool = require("../config/db");
 
-class Candidato {
-  static async getAll() {
-    try {
-      const [results] = await db.query("SELECT * FROM Candidatos");
-      return results;
-    } catch (err) {
-      throw new Error(err);
-    }
-  }
-
-  static async create(candidato) {
-    try {
-      const { nome, cpf, endereco } = candidato;
-      const [result] = await db.query(
-        "INSERT INTO Candidatos (nome, cpf, endereco) VALUES (?, ?, ?)",
-        [nome, cpf, endereco]
-      );
-      return result.insertId;
-    } catch (err) {
-      throw new Error(err);
-    }
-  }
+async function getAllCandidatos() {
+  const [rows] = await pool.query("SELECT * FROM Candidatos");
+  return rows;
 }
 
-module.exports = Candidato;
+async function createCandidato(nome, cpf, endereco) {
+  await pool.query(
+    "INSERT INTO Candidatos (nome, cpf, endereco) VALUES (?, ?, ?)",
+    [nome, cpf, endereco]
+  );
+}
+
+module.exports = {
+  getAllCandidatos,
+  createCandidato,
+};

@@ -1,13 +1,18 @@
-const db = require("../config/db");
+const pool = require("../config/db");
 
-class Votacao {
-  static async votar(eleitorId, candidatoId) {
-    const [result] = await db.query(
-      "INSERT INTO Votos (eleitor_id, candidato_id) VALUES (?, ?)",
-      [eleitorId, candidatoId]
-    );
-    return result.insertId;
-  }
+async function getAllVotacoes() {
+  const [rows] = await pool.query("SELECT * FROM Votacoes");
+  return rows;
 }
 
-module.exports = Votacao;
+async function createVotacao(eleicao_id, data_inicio, data_fim) {
+  await pool.query(
+    "INSERT INTO Votacoes (eleicao_id, data_inicio, data_fim) VALUES (?, ?, ?)",
+    [eleicao_id, data_inicio, data_fim]
+  );
+}
+
+module.exports = {
+  getAllVotacoes,
+  createVotacao,
+};

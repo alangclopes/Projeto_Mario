@@ -9,20 +9,21 @@
   <body>
     <h1>Lista de Candidatos</h1>
     <ul>
-      <% if (candidatos && candidatos.length > 0) { %> <%
-      candidatos.forEach(candidato => { %>
+      <% candidatos.forEach(candidato => { %>
       <li>
         <%= candidato.nome %> - <%= candidato.cpf %> - <%= candidato.endereco %>
         <form action="/votacao/votar" method="post" style="display: inline">
-          <input type="hidden" name="eleitorId" value="<%= eleitorId %>" />
-          <input type="hidden" name="candidatoId" value="<%= candidato.id %>" />
+          <input
+            type="hidden"
+            name="candidato_id"
+            value="<%= candidato.id %>"
+          />
           <button type="submit">Votar</button>
         </form>
       </li>
-      <% }) %> <% } else { %>
-      <li>Nenhum candidato encontrado.</li>
-      <% } %>
+      <% }) %>
     </ul>
+    <% if (typeof user !== 'undefined' && user.role === 'admin') { %>
     <h2>Criar Novo Candidato</h2>
     <form action="/candidatos/criar" method="post">
       <input type="text" name="nome" placeholder="Nome" required />
@@ -30,5 +31,6 @@
       <input type="text" name="endereco" placeholder="Endereço" required />
       <button type="submit">Criar</button>
     </form>
+    <% } %>
   </body>
 </html>

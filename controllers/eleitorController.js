@@ -1,20 +1,12 @@
-const Eleitor = require("../models/eleitor");
+const eleitorModel = require("../models/eleitor");
 
-exports.listarEleitores = (req, res) => {
-  Eleitor.getAll((eleitores) => {
-    res.render("eleitor/listar", { eleitores });
-  });
+exports.getAll = async (req, res) => {
+  const eleitores = await eleitorModel.getAllEleitores();
+  res.render("eleitor/index", { eleitores });
 };
 
-exports.criarEleitor = (req, res) => {
-  const eleitor = {
-    nome: req.body.nome,
-    cpf: req.body.cpf,
-    endereco: req.body.endereco,
-    senha: req.body.senha,
-    liberado: req.body.liberado || false,
-  };
-  Eleitor.create(eleitor, () => {
-    res.redirect("/eleitores");
-  });
+exports.create = async (req, res) => {
+  const { nome, cpf, endereco, senha } = req.body;
+  await eleitorModel.createEleitor(nome, cpf, endereco, senha);
+  res.redirect("/eleitores");
 };
