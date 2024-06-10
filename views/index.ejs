@@ -3,21 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de Votação</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Home</title>
   </head>
   <body>
     <h1>Bem-vindo ao Sistema de Votação</h1>
-    <ul>
-      <li><a href="/candidatos">Lista de Candidatos</a></li>
-      <li><a href="/eleitores">Lista de Eleitores</a></li>
-      <li><a href="/votacoes">Lista de Votações</a></li>
-      <% if (typeof user !== 'undefined') { %>
-      <li><a href="/logout">Logout</a></li>
-      <% } else { %>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Register</a></li>
-      <% } %>
-    </ul>
+    <% if (!user) { %>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+    <% } else { %>
+    <a href="/logout">Logout</a>
+    <% if (user.role === 'admin') { %>
+    <a href="/candidatos">Gerenciar Candidatos</a>
+    <a href="/eleitores">Gerenciar Eleitores</a>
+    <% } else { %>
+    <a href="/votacoes">Votações</a>
+    <% } %> <% } %>
   </body>
 </html>

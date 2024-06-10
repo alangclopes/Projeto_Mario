@@ -1,20 +1,22 @@
 function isAuthenticated(req, res, next) {
   if (req.session.userId) {
-    next();
-  } else {
-    res.redirect("/login");
+    return next();
   }
+  res.redirect("/login");
 }
 
 function isAdmin(req, res, next) {
   if (req.session.role === "admin") {
-    next();
-  } else {
-    res.status(403).send("Acesso negado");
+    return next();
   }
+  res.status(403).send("Acesso negado");
 }
 
-module.exports = {
-  isAuthenticated,
-  isAdmin,
-};
+function isEleitor(req, res, next) {
+  if (req.session.role === "eleitor") {
+    return next();
+  }
+  res.status(403).send("Acesso negado");
+}
+
+module.exports = { isAuthenticated, isAdmin, isEleitor };
