@@ -11,8 +11,7 @@
     <ul>
       <% eleitores.forEach(eleitor => { %>
       <li>
-        <%= eleitor.nome %> - <%= eleitor.cpf %> - <%= eleitor.endereco %> - <%=
-        eleitor.liberado ? 'Liberado' : 'Não Liberado' %>
+        <%= eleitor.nome %> - <%= eleitor.cpf %> - <%= eleitor.endereco %>
       </li>
       <% }) %>
     </ul>
@@ -22,8 +21,6 @@
       <input type="text" name="cpf" placeholder="CPF" required />
       <input type="text" name="endereco" placeholder="Endereço" required />
       <input type="password" name="senha" placeholder="Senha" required />
-      <label for="liberado">Liberado:</label>
-      <input type="checkbox" name="liberado" />
       <button type="submit">Criar</button>
     </form>
   </body>
