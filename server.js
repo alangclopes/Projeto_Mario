@@ -1,33 +1,36 @@
 const express = require("express");
 const path = require("path");
+const cookieParser = require("cookie-parser");
+const indexRoutes = require("./routes/indexRoutes");
+const candidatoRoutes = require("./routes/candidatoRoutes");
+const eleitorRoutes = require("./routes/eleitorRoutes");
+const votacaoRoutes = require("./routes/votacaoRoutes");
+const authRoutes = require("./routes/authRoutes");
+
 const app = express();
 
-// Importar as rotas
-const indexRoutes = require("./routes/indexRoutes");
-const authRoutes = require("./routes/authRoutes");
-const eleitorRoutes = require("./routes/eleitorRoutes");
-const adminRoutes = require("./routes/adminRoutes");
-const votacaoRoutes = require("./routes/votacaoRoutes");
-const candidatoRoutes = require("./routes/candidatoRoutes");
+// Configurações
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-// Middleware para analisar o corpo das requisições
-app.use(express.urlencoded({ extended: false }));
+// Middlewares
 app.use(express.json());
-
-// Configurar a pasta public para arquivos estáticos
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// Configurar o view engine
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-
-// Usar as rotas
+// Rotas
 app.use("/", indexRoutes);
-app.use("/auth", authRoutes);
-app.use("/eleitores", eleitorRoutes);
-app.use("/admin", adminRoutes);
-app.use("/votacao", votacaoRoutes);
 app.use("/candidatos", candidatoRoutes);
+app.use("/eleitores", eleitorRoutes);
+app.use("/votacoes", votacaoRoutes);
+app.use("/auth", authRoutes);
+
+// Middleware de erro
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).render("error", { error: err });
+});
 
 // Iniciar o servidor
 const PORT = process.env.PORT || 3000;

@@ -3,16 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de Votação</title>
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <h1>Bem-vindo ao Sistema de Votação</h1>
-    <% if (!user) { %>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
-    <% } else { %>
-    <p>Bem-vindo, <%= user.username %>!</p>
-    <a href="/logout">Logout</a>
-    <% } %>
+    <header>
+      <h1>Bem-vindo ao Sistema de Votação</h1>
+      <nav>
+        <ul>
+          <li><a href="/candidatos">Candidatos</a></li>
+          <li><a href="/eleitores">Eleitores</a></li>
+          <li><a href="/votacoes">Votações</a></li>
+          <li><a href="/auth/login">Login</a></li>
+          <li><a href="/auth/register">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Página Inicial</h2>
+      <p>Bem-vindo ao sistema de votação do condomínio!</p>
+    </main>
   </body>
 </html>

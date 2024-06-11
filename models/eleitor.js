@@ -1,28 +1,47 @@
-const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const pool = require("../config/db");
 
-const Eleitor = sequelize.define("Eleitor", {
-  nome: {
-    type: DataTypes.STRING,
-    allowNull: false,
+const Eleitor = {
+  create: async (eleitor) => {
+    const sql = `INSERT INTO eleitores (nome, cpf, predio, andar, numero_apt, senha) VALUES (?, ?, ?, ?, ?, ?)`;
+    const [result] = await pool.execute(sql, [
+      eleitor.nome,
+      eleitor.cpf,
+      eleitor.predio,
+      eleitor.andar,
+      eleitor.numero_apt,
+      eleitor.senha,
+    ]);
+    return result;
   },
-  cpf: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
+  findAll: async () => {
+    const [rows] = await pool.query(`SELECT * FROM eleitores`);
+    return rows;
   },
-  endereco: {
-    type: DataTypes.STRING,
-    allowNull: false,
+  findById: async (id) => {
+    const [rows] = await pool.execute(`SELECT * FROM eleitores WHERE id = ?`, [
+      id,
+    ]);
+    return rows[0];
   },
-  senha: {
-    type: DataTypes.STRING,
-    allowNull: false,
+  update: async (id, eleitor) => {
+    const sql = `UPDATE eleitores SET nome = ?, cpf = ?, predio = ?, andar = ?, numero_apt = ?, senha = ? WHERE id = ?`;
+    const [result] = await pool.execute(sql, [
+      eleitor.nome,
+      eleitor.cpf,
+      eleitor.predio,
+      eleitor.andar,
+      eleitor.numero_apt,
+      eleitor.senha,
+      id,
+    ]);
+    return result;
   },
-  liberado: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
+  delete: async (id) => {
+    const [result] = await pool.execute(`DELETE FROM eleitores WHERE id = ?`, [
+      id,
+    ]);
+    return result;
   },
-});
+};
 
 module.exports = Eleitor;

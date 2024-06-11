@@ -1,46 +1,38 @@
-const pool = require("../config/db");
+const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-exports.getLogin = (req, res) => {
-  res.render("auth/login");
-};
-
-exports.postLogin = async (req, res) => {
-  const { username, password } = req.body;
-  const [rows] = await pool.query("SELECT * FROM Users WHERE username = ?", [
-    username,
-  ]);
-  if (rows.length > 0) {
-    const user = rows[0];
-    const match = await bcrypt.compare(password, user.password);
-    if (match) {
-      req.session.userId = user.id;
-      req.session.role = user.role;
-      if (user.role === "admin") {
-        return res.redirect("/admin");
-      } else {
-        return res.redirect("/votacoes");
-      }
-    }
+exports.register = async (req, res) => {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    await User.create({
+      username: req.body.username,
+      password: hashedPassword,
+    });
+    res.redirect("/auth/login");
+  } catch (error) {
+    res.status(500).send(error.message);
   }
-  res.status(401).send("Usuário ou senha incorretos");
 };
 
-exports.getRegister = (req, res) => {
-  res.render("auth/register");
-};
-
-exports.postRegister = async (req, res) => {
-  const { username, password, role } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  await pool.query(
-    "INSERT INTO Users (username, password, role) VALUES (?, ?, ?)",
-    [username, hashedPassword, role]
-  );
-  res.redirect("/login");
+exports.login = async (req, res) => {
+  try {
+    const user = await User.findByUsername(req.body.username);
+    if (user && (await bcrypt.compare(req.body.password, user.password))) {
+      const token = jwt.sign({ id: user.id }, "seuSegredo", {
+        expiresIn: "1h",
+      });
+      res.cookie("token", token, { httpOnly: true });
+      res.redirect("/");
+    } else {
+      res.status(401).send("Username or password incorrect");
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 };
 
 exports.logout = (req, res) => {
-  req.session.destroy();
-  res.redirect("/login");
+  res.clearCookie("token");
+  res.redirect("/auth/login");
 };
