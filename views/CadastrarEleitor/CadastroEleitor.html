@@ -20,7 +20,8 @@
     </header>
     <main class="entradaInfos">
         <p class="nomePagina">Cadastro de eleitor</p>
-        <form class="form" method="post" action="">
+        <form  method="post" action="">
+        <div class="form">
             <div class="metadeForm"> 
                 <div class="info">
                     <label for="Nome" class="label">Nome</label>
@@ -54,26 +55,27 @@
                     <input id="categoria" type="number" placeholder="N°.Apt">
                     </div>
                 </div>
-                <div class="info">
-                    <label for="senha" class="labelEsp">Senha</label>
-                    <div class="alinhamento">
-                        <input type="password" id="Senha" placeholder="Insira seu endereço">
-                        <i class="fas fa-eye-slash" id="toggleSenha" onclick="ViewPassword()"></i>
-                    </div>
+            <div class="info">
+                <label for="senha" class="labelEsp">Senha</label>
+                <div class="alinhamento">
+                    <input type="password" id="Senha" placeholder="Insira seu endereço">
+                    <i class="fas fa-eye-slash" id="toggleSenha" onclick="ViewPassword()"></i>
                 </div>
             </div>
+        </div>
+    </div>
+        <div class="botaoDiv">
+            <div class="voltaDiv">
+                <button class="voltar">Voltar</button>
+            </div>
+            <div class="cadastraDiv">
+                <button class="cadastrar">Cadastrar Eleitor</button>
+                <p class="textoI">Ao cadastra-se você estará sujeito a nossos  Termos de eleição</p>
+            </div>
+        </div>
+        <div class="linha completa"></div>
         </form>
         </main>
-            <div class="botaoDiv">
-                <form method="get" action="Rota para Caminhos admin">
-                    <button class="voltar">Voltar</button>
-                </form>
-                <div class="cadastraDiv">
-                    <button class="cadastrar">Cadastrar Eleitor</button>
-                    <p class="textoI">Ao cadastra-se você estará sujeito a nossos  Termos de eleição</p>
-                </div>
-                </div>
-            <div class="linha completa"></div>
 
 </body>
 </html>
