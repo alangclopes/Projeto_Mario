@@ -8,6 +8,7 @@ const candidatoRoutes = require("./routes/candidatoRoutes");
 const chapaRoutes = require("./routes/chapaRoutes");
 const votacaoRoutes = require("./routes/votacaoRoutes");
 const authRoutes = require("./routes/authRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use("/candidatos", candidatoRoutes);
 app.use("/chapas", chapaRoutes);
 app.use("/votacoes", votacaoRoutes);
 app.use("/login", authRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 app.get("/", (req, res) => {
   res.render("index");

@@ -14,12 +14,14 @@ exports.adminLogin = async (req, res) => {
   try {
     const user = await User.findOne(username);
 
-    if (!user || user.password !== password) {
-      return res.status(401).render("auth/adminLogin", { error: "Credenciais inválidas" });
+    if (!user || user.password !== password || user.role !== "admin") {
+      return res
+        .status(401)
+        .render("auth/adminLogin", { error: "Credenciais inválidas" });
     }
 
     req.session.user = user;
-    res.redirect("/dashboard");
+    res.redirect("/dashboard"); // Redireciona para o dashboard após o login bem-sucedido
   } catch (error) {
     console.error(error);
     res.status(500).send("Erro no servidor");
@@ -45,7 +47,9 @@ exports.eleitorLogin = async (req, res) => {
     const user = await User.findOneByCpf(cpf);
 
     if (!user || user.password !== password) {
-      return res.status(401).render("auth/eleitorLogin", { error: "Credenciais inválidas" });
+      return res
+        .status(401)
+        .render("auth/eleitorLogin", { error: "Credenciais inválidas" });
     }
 
     req.session.user = user;
