@@ -4,44 +4,23 @@ exports.renderAdminLogin = (req, res) => {
   res.render("auth/adminLogin");
 };
 
-exports.adminLogin = async (req, res) => {
-  const { Nome, Senha } = req.body;
+exports.loginAdmin = async (req, res) => {
+  const { username, password } = req.body;
   try {
-    const [admins] = await pool.query(
-      "SELECT * FROM Admins WHERE nome = ? AND senha = ?",
-      [Nome, Senha]
+    const [user] = await pool.query(
+      "SELECT * FROM Users WHERE username = ? AND password = ? AND role = 'admin'",
+      [username, password]
     );
-    if (admins.length > 0) {
-      req.session.admin = admins[0];
-      res.redirect("/admin/dashboard");
+    if (user.length > 0) {
+      // Se as credenciais estiverem corretas, crie uma sessão
+      req.session.user = user[0];
+      res.redirect("/dashboard");
     } else {
+      // Se as credenciais estiverem incorretas, redirecione de volta para o formulário de login
       res.redirect("/login/admin");
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("Erro ao fazer login");
-  }
-};
-
-exports.renderEleitorLogin = (req, res) => {
-  res.render("auth/eleitorLogin");
-};
-
-exports.eleitorLogin = async (req, res) => {
-  const { Nome, Senha } = req.body;
-  try {
-    const [eleitores] = await pool.query(
-      "SELECT * FROM Eleitores WHERE nome = ? AND senha = ?",
-      [Nome, Senha]
-    );
-    if (eleitores.length > 0) {
-      req.session.eleitor = eleitores[0];
-      res.redirect("/eleitores/dashboard");
-    } else {
-      res.redirect("/login/eleitor");
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Erro ao fazer login");
+    res.status(500).send("Erro ao autenticar o administrador");
   }
 };

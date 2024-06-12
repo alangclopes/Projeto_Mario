@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/authController");
 
-router.get("/admin", authController.renderAdminLogin);
-router.post("/admin", authController.adminLogin);
-router.get("/eleitor", authController.renderEleitorLogin);
-router.post("/eleitor", authController.eleitorLogin);
+// Rota para renderizar o formulário de login do administrador
+router.get("/login/admin", authController.renderAdminLogin);
+
+// Rota para processar o login do administrador
+router.post("/login/admin", authController.loginAdmin);
 
 module.exports = router;
