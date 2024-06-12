@@ -1,26 +1,22 @@
-const pool = require("../config/db");
+const User = require("../models/user");
 
-exports.renderAdminLogin = (req, res) => {
+exports.showAdminLoginForm = (req, res) => {
   res.render("auth/adminLogin");
 };
 
-exports.loginAdmin = async (req, res) => {
+exports.adminLogin = async (req, res) => {
   const { username, password } = req.body;
-  try {
-    const [user] = await pool.query(
-      "SELECT * FROM Users WHERE username = ? AND password = ? AND role = 'admin'",
-      [username, password]
-    );
-    if (user.length > 0) {
-      // Se as credenciais estiverem corretas, crie uma sessão
-      req.session.user = user[0];
-      res.redirect("/dashboard");
-    } else {
-      // Se as credenciais estiverem incorretas, redirecione de volta para o formulário de login
-      res.redirect("/login/admin");
+   try {
+    const user = await User.findOne({ username: username, role: "admin" });
+
+    if (!user || user.password !== password) {
+
+      return res.status(401).send("Credenciais inválidas");
     }
+
+    res.redirect("/dashboard");
   } catch (error) {
     console.error(error);
-    res.status(500).send("Erro ao autenticar o administrador");
+    res.status(500).send("Erro no servidor");
   }
 };
