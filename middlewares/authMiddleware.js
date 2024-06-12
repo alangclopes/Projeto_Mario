@@ -1,6 +1,5 @@
-// middlewares/authMiddleware.js
 exports.isAdminAuthenticated = (req, res, next) => {
-  if (req.session.user) {
+  if (req.session.user && req.session.user.role === "admin") {
     return next();
   } else {
     res.redirect("/login/admin");
@@ -8,7 +7,7 @@ exports.isAdminAuthenticated = (req, res, next) => {
 };
 
 exports.isEleitorAuthenticated = (req, res, next) => {
-  if (req.session.user) {
+  if (req.session.user && req.session.user.role === "eleitor") {
     return next();
   } else {
     res.redirect("/login/eleitor");

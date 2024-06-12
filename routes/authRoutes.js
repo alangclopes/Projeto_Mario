@@ -1,4 +1,3 @@
-// routes/authRoutes.js
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
@@ -8,7 +7,6 @@ router.get('/admin', authController.showAdminLoginForm);
 router.post('/admin', authController.adminLogin);
 router.get('/dashboard', authMiddleware.isAdminAuthenticated, authController.dashboard);
 
-// Adicionando rotas para eleitores
 router.get('/eleitor', authController.showEleitorLoginForm);
 router.post('/eleitor', authController.eleitorLogin);
 router.get('/votacao', authMiddleware.isEleitorAuthenticated, (req, res) => {

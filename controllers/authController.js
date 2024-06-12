@@ -1,4 +1,3 @@
-// controllers/authController.js
 const User = require("../models/User");
 
 exports.showAdminLoginForm = (req, res) => {
@@ -36,14 +35,14 @@ exports.showEleitorLoginForm = (req, res) => {
 };
 
 exports.eleitorLogin = async (req, res) => {
-  const { username, password } = req.body;
+  const { cpf, password } = req.body;
 
-  if (!username || !password) {
+  if (!cpf || !password) {
     return res.status(400).send("Por favor, preencha todos os campos");
   }
 
   try {
-    const user = await User.findOne(username);
+    const user = await User.findOneByCpf(cpf);
 
     if (!user || user.password !== password) {
       return res.status(401).render("auth/eleitorLogin", { error: "Credenciais inválidas" });
