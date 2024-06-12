@@ -2,10 +2,8 @@ const express = require("express");
 const router = express.Router();
 const eleitorController = require("../controllers/eleitorController");
 
-router.get("/", eleitorController.findAll);
-router.get("/:id", eleitorController.findById);
-router.post("/", eleitorController.create);
-router.put("/:id", eleitorController.update);
-router.delete("/:id", eleitorController.delete);
+router.get("/", eleitorController.getAllEleitores);
+router.get("/cadastrar", eleitorController.getEleitorForm);
+router.post("/cadastrar", eleitorController.createEleitor);
 
 module.exports = router;

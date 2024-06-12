@@ -3,25 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Página Inicial</title>
+    <title>Vila Verde</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Bem-vindo ao Sistema de Votação</h1>
-      <nav>
-        <ul>
-          <li><a href="/candidatos">Candidatos</a></li>
-          <li><a href="/eleitores">Eleitores</a></li>
-          <li><a href="/votacoes">Votações</a></li>
-          <li><a href="/auth/login">Login</a></li>
-          <li><a href="/auth/register">Register</a></li>
-        </ul>
-      </nav>
+    <header class="headerd">
+      <div class="textlogo">
+        <p class="logo">Vila</p>
+        <p class="logo verde">Verde</p>
+      </div>
+      <div class="linha"></div>
     </header>
-    <main>
-      <h2>Página Inicial</h2>
-      <p>Bem-vindo ao sistema de votação do condomínio!</p>
+    <div class="nomeLogin">
+      <p class="textLogin">Bem-vindo à Vila Verde</p>
+    </div>
+    <main class="entradaInfos">
+      <div class="opcoesLogin">
+        <a href="/login/admin" class="button">Login Admin</a>
+        <a href="/login/eleitor" class="button">Login Eleitor</a>
+      </div>
     </main>
   </body>
 </html>

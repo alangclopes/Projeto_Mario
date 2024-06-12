@@ -1,38 +1,47 @@
-const User = require("../models/user");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const pool = require("../config/db");
 
-exports.register = async (req, res) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    await User.create({
-      username: req.body.username,
-      password: hashedPassword,
-    });
-    res.redirect("/auth/login");
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
+exports.renderAdminLogin = (req, res) => {
+  res.render("auth/adminLogin");
 };
 
-exports.login = async (req, res) => {
+exports.adminLogin = async (req, res) => {
+  const { Nome, Senha } = req.body;
   try {
-    const user = await User.findByUsername(req.body.username);
-    if (user && (await bcrypt.compare(req.body.password, user.password))) {
-      const token = jwt.sign({ id: user.id }, "seuSegredo", {
-        expiresIn: "1h",
-      });
-      res.cookie("token", token, { httpOnly: true });
-      res.redirect("/");
+    const [admins] = await pool.query(
+      "SELECT * FROM Admins WHERE nome = ? AND senha = ?",
+      [Nome, Senha]
+    );
+    if (admins.length > 0) {
+      req.session.admin = admins[0];
+      res.redirect("/admin/dashboard");
     } else {
-      res.status(401).send("Username or password incorrect");
+      res.redirect("/login/admin");
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    console.error(error);
+    res.status(500).send("Erro ao fazer login");
   }
 };
 
-exports.logout = (req, res) => {
-  res.clearCookie("token");
-  res.redirect("/auth/login");
+exports.renderEleitorLogin = (req, res) => {
+  res.render("auth/eleitorLogin");
+};
+
+exports.eleitorLogin = async (req, res) => {
+  const { Nome, Senha } = req.body;
+  try {
+    const [eleitores] = await pool.query(
+      "SELECT * FROM Eleitores WHERE nome = ? AND senha = ?",
+      [Nome, Senha]
+    );
+    if (eleitores.length > 0) {
+      req.session.eleitor = eleitores[0];
+      res.redirect("/eleitores/dashboard");
+    } else {
+      res.redirect("/login/eleitor");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erro ao fazer login");
+  }
 };

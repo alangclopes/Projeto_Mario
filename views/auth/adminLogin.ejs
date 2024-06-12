@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/loginAdm.css">
+    <script src="/js/mudeAdm.js"></script>
+</head>
+<body>
+    <header class="headerd">
+        <div class="textlogo">
+            <p class="logo">Vila</p>
+            <p class="logo verde">Verde</p>
+        </div>
+        <div class="linha"></div>
+    </header>
+    <div class="nomeLogin">
+        <p class="textLogin">Login Admin</p>
+    </div>
+    <main class="entradaInfos">
+        <form method="post" action="/login/admin">
+            <div class="login">
+                <div class="metadinha">
+                    <label class="Label" for="Nome">Nome</label>
+                    <input type="text" class="input" name="Nome" id="Nome" placeholder="Insira seu nome de usuário">
+                </div>
+                <div class="metadinha">
+                    <label class="Label" for="Senha">Senha</label>
+                    <input type="password" class="input" name="Senha" id="Senha" placeholder="Insira sua senha completa">
+                    <i class="fas fa-eye-slash" id="toggleSenha" onclick="ViewPassword()"></i>
+                </div>
+            </div>
+            <div class="localButton">
+                <button type="submit" class="button">Entrar</button>
+            </div>
+            <div class="linhaCompleta"></div>
+        </form>
+    </main>
+</body>
+</html>

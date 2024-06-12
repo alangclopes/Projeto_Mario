@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const candidatoController = require("../controllers/candidatoController");
+const chapaController = require("../controllers/chapaController");
 
-router.get("/", candidatoController.findAll);
-router.get("/:id", candidatoController.findById);
-router.post("/", candidatoController.create);
-router.put("/:id", candidatoController.update);
-router.delete("/:id", candidatoController.delete);
+router.get("/create", chapaController.renderCreateChapa);
+router.post("/create", chapaController.createChapa);
 
 module.exports = router;

@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lista de Candidatos</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-  </head>
-  <body>
-    <h1>Lista de Candidatos</h1>
-    <ul>
-      <% candidatos.forEach(candidato => { %>
-      <li>
-        <%= candidato.nome %> - <%= candidato.cpf %> - <%= candidato.endereco %>
-        <form action="/votacao/votar" method="post" style="display: inline">
-          <input
-            type="hidden"
-            name="candidato_id"
-            value="<%= candidato.id %>"
-          />
-          <button type="submit">Votar</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Candidato</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/cadastroCandidato.css">
+</head>
+<body>
+    <header class="headerd">
+        <div class="textlogo">
+            <p class="logo">Vila</p>
+            <p class="logo verde">Verde</p>
+        </div>
+        <div class="linha"></div>
+    </header>
+    <main class="entradaInfos">
+        <p class="nomePagina">Cadastro de candidato</p>
+        <form method="post" action="/candidatos/cadastrar">
+            <div class="form">
+                <div class="metadeForm"> 
+                    <div class="info">
+                        <label for="Nome" class="label">Nome</label>
+                        <input type="text" id="Nome" name="nome" placeholder="Digite seu nome completo" required>
+                    </div>
+                    <div class="info">
+                        <label for="CPF" class="label">CPF</label>
+                        <input type="text" id="CPF" name="cpf" placeholder="Digite seu CPF completo" required>
+                    </div>
+                </div>
+                <div class="metadeForm segunda">
+                    <div class="info">
+                        <label for="Endereco" class="labelEsp">Endereço</label>
+                        <input type="text" id="Endereco" name="endereco" placeholder="Insira seu endereço" required>
+                    </div>
+                </div>
+            </div>
+            <div class="botaoDiv">
+                <div class="voltaDiv">
+                    <button type="button" class="voltar" onclick="window.history.back();">Voltar</button>
+                </div>
+                <div class="cadastraDiv">
+                    <button type="submit" class="cadastrar">Cadastrar candidato</button>
+                    <p class="textoI">Ao cadastrar-se você estará sujeito aos nossos Termos de eleição</p>
+                </div>
+            </div>
+            <div class="linha completa"></div>
         </form>
-      </li>
-      <% }) %>
-    </ul>
-    <% if (typeof user !== 'undefined' && user.role === 'admin') { %>
-    <h2>Criar Novo Candidato</h2>
-    <form action="/candidatos/criar" method="post">
-      <input type="text" name="nome" placeholder="Nome" required />
-      <input type="text" name="cpf" placeholder="CPF" required />
-      <input type="text" name="endereco" placeholder="Endereço" required />
-      <button type="submit">Criar</button>
-    </form>
-    <% } %>
-  </body>
+    </main>
+</body>
 </html>

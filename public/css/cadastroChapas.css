@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.headerd {
+  width: 100%;
+  height: 75px;
+}
+.textlogo {
+  display: flex;
+  flex-direction: row;
+  margin-left: 6px;
+}
+.logo {
+  font-size: 44px;
+  font-family: "inika";
+  color: #bfbfbf;
+}
+.verde {
+  color: #00a811;
+}
+.linha {
+  background-color: #c8c8c8;
+  width: 600px;
+  height: 0.5px;
+  margin-left: 3px;
+}
+.entradaInfos {
+  width: 100%;
+  height: 440px;
+}
+.nomePagina {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "Montserrat", serif;
+  padding: 30px;
+}
+.form {
+  display: flex;
+  flex-direction: row;
+}
+.metadeForm {
+  width: 700px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat";
+  font-weight: 600;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+#Nome {
+  width: 400px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #565656;
+  outline: none;
+  padding-left: 3px;
+  font-size: 17px;
+}
+#CPF {
+  width: 400px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #565656;
+  outline: none;
+  padding-left: 3px;
+  font-size: 17px;
+}
+#Senha {
+  border: none;
+  outline: none;
+  width: 400px;
+  height: 40px;
+  padding-left: 3px;
+  background-color: #e1e1e1;
+  margin-top: 4px;
+  font-size: 17px;
+}
+.label {
+  margin-bottom: 20px;
+  margin-left: 3px;
+  font-size: 20px;
+}
+.labelEsp {
+  font-size: 20px;
+  margin-left: 3px;
+}
+.botaoDiv {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+.cadastraDiv {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.cadastrar {
+  width: 200px;
+  height: 50px;
+  background-color: #00a811;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Montserrat";
+  color: #fff;
+  font-size: 17px;
+}
+.cadastrar:hover {
+  background-color: #00e617;
+}
+#eleicao {
+  width: 400px;
+  height: 40px;
+  font-family: "Montserrat";
+}
+.voltaDiv {
+  display: flex;
+  align-items: center;
+}
+.voltar:hover {
+  background-color: #acacac;
+}
+.voltar {
+  width: 100px;
+  height: 30px;
+  margin-left: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  background-color: #565656;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Montserrat";
+}
+.textoI {
+  font-family: "Montserrat";
+  margin-top: 6px;
+}
+.completa {
+  width: 99.7%;
+}
+.alinhamento {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

@@ -1,38 +1,22 @@
 const pool = require("../config/db");
 
 const Candidato = {
-  create: async (candidato) => {
-    const sql = `INSERT INTO candidatos (nome, partido) VALUES (?, ?)`;
-    const [result] = await pool.execute(sql, [
-      candidato.nome,
-      candidato.partido,
-    ]);
-    return result;
+  create: async (nome, cpf, endereco) => {
+    const [result] = await pool.execute(
+      "INSERT INTO Candidatos (nome, cpf, endereco) VALUES (?, ?, ?)",
+      [nome, cpf, endereco]
+    );
+    return result.insertId;
   },
   findAll: async () => {
-    const [rows] = await pool.query(`SELECT * FROM candidatos`);
+    const [rows] = await pool.query("SELECT * FROM Candidatos");
     return rows;
   },
   findById: async (id) => {
-    const [rows] = await pool.execute(`SELECT * FROM candidatos WHERE id = ?`, [
+    const [rows] = await pool.query("SELECT * FROM Candidatos WHERE id = ?", [
       id,
     ]);
     return rows[0];
-  },
-  update: async (id, candidato) => {
-    const sql = `UPDATE candidatos SET nome = ?, partido = ? WHERE id = ?`;
-    const [result] = await pool.execute(sql, [
-      candidato.nome,
-      candidato.partido,
-      id,
-    ]);
-    return result;
-  },
-  delete: async (id) => {
-    const [result] = await pool.execute(`DELETE FROM candidatos WHERE id = ?`, [
-      id,
-    ]);
-    return result;
   },
 };
 

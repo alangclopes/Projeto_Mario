@@ -1,46 +1,28 @@
 const Eleitor = require("../models/eleitor");
+const bcrypt = require("bcrypt");
 
-exports.create = async (req, res) => {
+exports.createEleitor = async (req, res) => {
+  const { nome, cpf, endereco, senha } = req.body;
   try {
-    await Eleitor.create(req.body);
+    const hashedPassword = await bcrypt.hash(senha, 10);
+    await Eleitor.create(nome, cpf, endereco, hashedPassword);
     res.redirect("/eleitores");
   } catch (error) {
-    res.status(500).send(error.message);
+    console.error(error);
+    res.status(500).send("Erro ao cadastrar eleitor");
   }
 };
 
-exports.findAll = async (req, res) => {
+exports.getAllEleitores = async (req, res) => {
   try {
     const eleitores = await Eleitor.findAll();
     res.render("eleitor/index", { eleitores });
   } catch (error) {
-    res.status(500).send(error.message);
+    console.error(error);
+    res.status(500).send("Erro ao buscar eleitores");
   }
 };
 
-exports.findById = async (req, res) => {
-  try {
-    const eleitor = await Eleitor.findById(req.params.id);
-    res.render("eleitor/edit", { eleitor });
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-};
-
-exports.update = async (req, res) => {
-  try {
-    await Eleitor.update(req.params.id, req.body);
-    res.redirect("/eleitores");
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-};
-
-exports.delete = async (req, res) => {
-  try {
-    await Eleitor.delete(req.params.id);
-    res.redirect("/eleitores");
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
+exports.getEleitorForm = (req, res) => {
+  res.render("eleitor/create");
 };

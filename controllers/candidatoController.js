@@ -1,46 +1,26 @@
 const Candidato = require("../models/candidato");
 
-exports.create = async (req, res) => {
+exports.createCandidato = async (req, res) => {
+  const { nome, cpf, endereco } = req.body;
   try {
-    await Candidato.create(req.body);
+    await Candidato.create(nome, cpf, endereco);
     res.redirect("/candidatos");
   } catch (error) {
-    res.status(500).send(error.message);
+    console.error(error);
+    res.status(500).send("Erro ao cadastrar candidato");
   }
 };
 
-exports.findAll = async (req, res) => {
+exports.getAllCandidatos = async (req, res) => {
   try {
     const candidatos = await Candidato.findAll();
     res.render("candidato/index", { candidatos });
   } catch (error) {
-    res.status(500).send(error.message);
+    console.error(error);
+    res.status(500).send("Erro ao buscar candidatos");
   }
 };
 
-exports.findById = async (req, res) => {
-  try {
-    const candidato = await Candidato.findById(req.params.id);
-    res.render("candidato/edit", { candidato });
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-};
-
-exports.update = async (req, res) => {
-  try {
-    await Candidato.update(req.params.id, req.body);
-    res.redirect("/candidatos");
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-};
-
-exports.delete = async (req, res) => {
-  try {
-    await Candidato.delete(req.params.id);
-    res.redirect("/candidatos");
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
+exports.getCandidatoForm = (req, res) => {
+  res.render("candidato/create");
 };
