@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Eleitor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/loginEleitor.css">    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="/js/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="/css/loginAdm.css">
-    <script src="/js/mudeAdm.js"></script>
+    <title>Login Eleitor</title>
 </head>
 <body>
-    <header class="headerd">
-        <div class="textlogo">
-            <p class="logo">Vila</p>
-            <p class="logo verde">Verde</p>
-        </div>
-        <div class="linha"></div>
-    </header>
-    <div class="nomeLogin">
-        <p class="textLogin">Login Eleitor</p>
-    </div>
-    <main class="entradaInfos">
-        <form method="post" action="/login/eleitor">
-            <div class="login">
-                <div class="metadinha">
-                    <label class="Label" for="Nome">Nome</label>
-                    <input type="text" class="input" name="Nome" id="Nome" placeholder="Insira seu nome de usuário">
+    <div id="container">
+        <nav id="logo">
+            <p><span class="vila">Vila</span> <span class="verde">Verde</span></p>
+            <div class="line"></div>
+        </nav>
+        <div class="Vota">
+            <p class="Vota">Votação</p>
+        </div>    
+        <form action="/login/eleitor" method="post" class="formErro">
+            <div class="forma">
+                <div class="divOO">
+                    <div class="divAA">
+                        <label for="cpf" class="label">CPF</label>
+                        <input type="text" id="cpf" class="inputs" name="username" placeholder="Insira seu CPF completo" required>
+                    </div>
                 </div>
-                <div class="metadinha">
-                    <label class="Label" for="Senha">Senha</label>
-                    <input type="password" class="input" name="Senha" id="Senha" placeholder="Insira sua senha completa">
-                    <i class="fas fa-eye-slash" id="toggleSenha" onclick="ViewPassword()"></i>
+                <div class="divOO">
+                    <div class="divAA">
+                        <label for="senha" class="label">Senha</label>
+                        <input type="password" id="Senha" class="inputs" name="password" minlength="6" required>
+                        <i class="fas fa-eye-slash" id="toggleSenha" onclick="ViewPassword()"></i>
+                    </div>
                 </div>
             </div>
-            <div class="localButton">
-                <button type="submit" class="button">Entrar</button>
+            <div class="butao">
+                <button class="verification">Verificar</button>
             </div>
-            <div class="linhaCompleta"></div>
         </form>
-    </main>
+    </div>
 </body>
 </html>
