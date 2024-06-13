@@ -7,29 +7,31 @@ exports.showAdminLoginForm = (req, res) => {
 exports.adminLogin = async (req, res) => {
   const { username, password } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).send("Por favor, preencha todos os campos");
-  }
-
   try {
+    // Verifica se ambos os campos estão preenchidos
+    if (!username || !password) {
+      return res.status(400).send("Por favor, preencha todos os campos");
+    }
+
+    // Busca o usuário no banco de dados pelo nome de usuário
     const user = await User.findOne(username);
 
-    if (!user || user.password !== password || user.role !== "admin") {
+    // Verifica se o usuário foi encontrado e se a senha está correta
+    if (!user || user.password !== password ) {
       return res
         .status(401)
         .render("auth/adminLogin", { error: "Credenciais inválidas" });
     }
 
+    // Define o usuário na sessão
     req.session.user = user;
-    res.redirect("/dashboard"); // Redireciona para o dashboard após o login bem-sucedido
+
+    // Redireciona para o dashboard após o login bem-sucedido
+    res.redirect("/dashboard");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erro no servidor");
   }
-};
-
-exports.dashboard = async (req, res) => {
-  res.render("auth/dashboard");
 };
 
 exports.showEleitorLoginForm = (req, res) => {

@@ -1,0 +1,151 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.headerd{
+   width: 100%;
+   height: 75px;
+}
+.textlogo{
+    display: flex;
+    flex-direction: row;
+    margin-left: 6px;
+}
+.logo{
+    font-size: 44px;
+    font-family: 'inika';
+    color: #BFBFBF;
+}
+.verde{
+    color: #00A811;
+}
+.linha{
+   background-color: #C8C8C8;
+    width: 600px;
+    height: 0.5px;
+    margin-left: 3px;
+}
+.linhaCompleta{
+    background-color: #C8C8C8;
+    width: 99.7%;
+    height: 0.5px;
+    margin-left: 3px;
+    margin-top: 90px;
+}
+
+.blocoChapa{
+    width: 98.7vw;
+    height: 260px;
+    display: flex;
+    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.35);
+    flex-direction: row;
+}
+.center{
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Chapa{
+    width: 65%;
+    height: 100%;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+
+}
+.numChapa{
+    width:80% ;
+    height: 80%;
+    margin: 60px;
+    background-color: #EAE8E8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.45);
+}
+.number{
+    font-family: 'Inika';
+    font-size: 70px;
+}
+.nomeChapa{
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Montserrat';
+}
+.dados{
+    width: 90%;
+    height: 100%;
+}
+.statu{
+    font-size: 17px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    margin-right: 6px;
+}
+.alinha{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+.pessoa{
+    font-family: 'Montserrat';
+}
+.localLinha{
+    width: 100%;
+    height: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.modoLinha{
+    background-color:rgba(37, 37, 37, 0.35);
+    width: 95%;
+    height: 2px;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.35);
+}
+.botao{
+    width: 200px;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.proprioBotao{
+    width: 150px;
+    height: 90px;
+    background-color: #00A811;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 25px;
+    font-family: 'Inika';
+    cursor: pointer;
+}
+.proprioBotao:hover{
+    background-color: #25db37;
+
+}
+.votacao{
+    width: 95vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inika';
+    margin: 30px ;
+}
+.entradaInfos{
+    overflow: hidden;
+    padding-top: 30px;
+}

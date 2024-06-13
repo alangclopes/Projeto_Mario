@@ -25,7 +25,7 @@ app.use("/eleitores", eleitorRoutes);
 app.use("/candidatos", candidatoRoutes);
 app.use("/chapas", chapaRoutes);
 app.use("/votacoes", votacaoRoutes);
-app.use("/login", authRoutes);
+app.use("/login", authRoutes); 
 app.use("/dashboard", dashboardRoutes);
 
 app.get("/", (req, res) => {

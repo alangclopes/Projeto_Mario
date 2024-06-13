@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/authController');
 const authMiddleware = require('../middlewares/authMiddleware');
+const authController = require('../controllers/authController'); // Verifique o caminho correto aqui
 
+// Rota para exibir o formulário de login do administrador
 router.get('/admin', authController.showAdminLoginForm);
+
+// Rota para lidar com o login do administrador
 router.post('/admin', authController.adminLogin);
-router.get('/dashboard', authMiddleware.isAdminAuthenticated, authController.dashboard);
+
+module.exports = router;
 
 router.get('/eleitor', authController.showEleitorLoginForm);
 router.post('/eleitor', authController.eleitorLogin);
