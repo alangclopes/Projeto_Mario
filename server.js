@@ -12,6 +12,7 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 const eleicaoRoutes = require("./routes/eleicaoRoutes");
 const candidatoChapaRoutes = require("./routes/candidatoChapaRoutes");
 const cargoRoutes = require("./routes/cargoRoutes")
+const controleEleicaoRoutes = require("./routes/controleEleicaoRoutes");
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use("/dashboard", dashboardRoutes);
 app.use("/eleicoes", eleicaoRoutes);
 app.use("/candidatoChapa", candidatoChapaRoutes);
 app.use("/cargos", cargoRoutes)
+app.use("/controle-eleicao", controleEleicaoRoutes);
 
 app.get("/", (req, res) => {
   res.render("index");
