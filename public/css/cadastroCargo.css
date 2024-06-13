@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#logo {
+    height: 100px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.verification {
+    margin-top: 20px;
+    height: 50px;
+    width: 200px;
+    color: #fff;
+    background-color: green;
+    font-size: 21px;
+    border-radius: 5px;
+}
+
+.verification:hover {
+    background-color: rgb(10, 202, 10);
+}
+
+.vila {
+    color: rgb(93, 93, 100);
+    font-family: "Inika";
+    font-size: 44px;
+}
+
+.verde {
+    color: green;
+    font-family: "Inika";
+    font-size: 44px;
+}
+
+.line {
+    width: 600px;
+    height: 0.5px;
+    background-color: #C8C8C8;
+    margin-top: 10px;
+}
+
+.forma {
+    width: 100%;
+    height: 440px;
+    display: flex;
+    flex-direction: row;
+}
+
+.divAA {
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat";
+}
+
+.inputs {
+    width: 400px;
+    height: 40px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #565656;
+    outline: none;
+    padding-left: 4px;
+}
+
+.formErro {
+    width: 100%;
+    height: 440px;
+    
+}
+
+.divOO {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center ;
+}
+
+.label {
+    font-size: 20px;
+    margin-left: 3px;
+    font-weight: 600;
+}
+
+.Vota {
+    display: flex;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Montserrat";
+    margin-bottom: 60px;
+}
+
+#toggleSenha {
+    position: relative;
+    bottom: 30px;
+    left: 381px;
+}
+
+.butao {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.innerLine {
+    width: 97,8%;
+    height: 0.5px;
+    background-color: #C8C8C8;
+    margin-top: 10px;
+}
+
+.termos {
+    display: flex;
+    justify-content: center;
+    font-family: "Montserrat";
+    font-size: 14px;
+}

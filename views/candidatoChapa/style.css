@@ -1,0 +1,154 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.headerd{
+   width: 100%;
+   height: 75px;
+}
+.textlogo{
+    display: flex;
+    flex-direction: row;
+    margin-left: 6px;
+}
+.logo{
+    font-size: 44px;
+    font-family: 'inika';
+    color: #BFBFBF;
+}
+.verde{
+    color: #00A811;
+}
+.linha{
+   background-color: #C8C8C8;
+    width: 600px;
+    height: 0.5px;
+    margin-left: 3px;
+}
+.entradaInfos{
+    width: 100%;
+    height: 440px;
+}
+.nomePagina{
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Montserrat',serif;
+    padding: 30px;
+}
+
+.form{
+    display: flex;
+    flex-direction: row;
+}
+
+.metadeForme{
+    width: 700px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    font-weight:600;
+    justify-content: space-around;
+    align-items: center;
+}
+.metadeForm{
+    width: 700px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    font-weight:600;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+
+.desing{
+    border: none;
+    outline: none;
+    width: 400px;
+    height: 40px;
+    padding-left: 3px;
+    background-color: #E1E1E1;
+    margin-top: 4px;
+    font-size: 17px;
+}
+.label{
+    margin-bottom: 20px;
+    margin-left: 3px;
+    font-size: 20px;
+}
+.labelEsp{
+    font-size: 20px;
+    margin-left: 3px;
+}
+.botaoDiv{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.cadastraDiv{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 70px;
+}
+.cadastrar{
+    width: 200px;
+    height: 50px;
+    background-color: #00A811;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    color:#fff;
+    font-size: 17px;
+}
+.cadastrar:hover{
+    background-color: #00e617;
+
+}
+.voltaDiv{
+    display:flex;
+    align-items:center;
+}
+.voltar:hover{
+    background-color: #acacac;
+
+}
+.voltar{
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+    background-color: #565656;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Montserrat';
+    margin-top: 30px;
+
+}
+.textoI{
+    font-family: 'Montserrat';
+    margin-top: 6px;
+    color: #acacac;
+}
+.completa{
+    width: 99.7%;
+}

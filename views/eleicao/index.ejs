@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Eleição</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/cadastroEleicao.css">
+</head>
+<body>
+    <header class="headerd">
+        <div class="textlogo">
+            <p class="logo">Vila</p>
+            <p class="logo verde">Verde</p>
+        </div>
+        <div class="linha"></div>
+    </header>
+    <main class="entradaInfos">
+        <p class="nomePagina">Cadastro de Eleição</p>
+        <form method="POST" action="/eleicoes/formulario">
+            <div class="form">
+                <div class="metadeForm"> 
+                    <div class="info">
+                        <label for="data" class="label">Data</label>
+                        <input type="date" id="data" name="data" required>
+                    </div>
+                </div>
+
+                <div class="metadeForm segunda">
+                    <div class="info">
+                        <label for="local" class="labelEsp">Local</label>
+                        <input type="text" id="local" name="local" placeholder="Insira o local da eleição" required>
+                    </div>
+                </div>
+            </div>
+            <div class="cadastraDiv">
+                <button type="submit" class="cadastrar">Cadastrar Eleição</button>
+                <p class="textoI">Ao realizar o cadastro você estará sujeito aos nossos Termos de Eleição</p>
+            </div>
+        </form>
+    </main>
+    <div class="botaoDiv">
+        <form method="GET" action="/dashboard">
+            <button class="voltar">Voltar para o Dashboard</button>
+        </form>
+    </div>
+    <div class="linha completa"></div>
+</body>
+</html>
