@@ -9,8 +9,9 @@ const chapaRoutes = require("./routes/chapaRoutes");
 const votacaoRoutes = require("./routes/votacaoRoutes");
 const authRoutes = require("./routes/authRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
-const cargoRoutes = require("./routes/cargoRoutes");
-const eleicaoRoutes = require("./routes/eleicaoRoutes"); // Importar as rotas de eleições
+const eleicaoRoutes = require("./routes/eleicaoRoutes");
+const candidatoChapaRoutes = require("./routes/candidatoChapaRoutes");
+const cargoRoutes = require("./routes/cargoRoutes")
 
 const app = express();
 
@@ -29,8 +30,9 @@ app.use("/chapas", chapaRoutes);
 app.use("/votacoes", votacaoRoutes);
 app.use("/login", authRoutes);
 app.use("/dashboard", dashboardRoutes);
-app.use("/cargos", cargoRoutes);
-app.use("/eleicoes", eleicaoRoutes); // Usar as rotas de eleições
+app.use("/eleicoes", eleicaoRoutes);
+app.use("/candidatoChapa", candidatoChapaRoutes);
+app.use("/cargos", cargoRoutes)
 
 app.get("/", (req, res) => {
   res.render("index");

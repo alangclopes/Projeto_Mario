@@ -1,0 +1,68 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.headerd{
+   width: 100%;
+   height: 75px;
+}
+.textlogo{
+    display: flex;
+    flex-direction: row;
+    margin-left: 6px;
+}
+.logo{
+    font-size: 44px;
+    font-family: 'inika';
+    color: #BFBFBF;
+}
+.verde{
+    color: #00A811;
+}
+.linha{
+   background-color: #C8C8C8;
+    width: 600px;
+    height: 0.5px;
+    margin-left: 3px;
+}
+.entradaInfos{
+    width: 100%;
+    height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.completa{
+    width: 99.7%;
+    margin-top: 90px;
+}
+.button{
+    width: 500px;
+    height: 40px;
+    overflow: none;
+    border: none;
+    background-color: #00A811;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-top: 60px;
+    cursor: pointer;
+}
+.rede{
+    background-color: rgb(170, 5, 5);
+}
+.button:hover{
+    background-color: #2fe441;
+
+}
+.rede:hover{
+    background-color: rgb(221, 50, 50);
+
+}

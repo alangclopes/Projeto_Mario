@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="headerd">
+        <div class="textlogo">
+            <p class="logo">Vila</p>
+            <p class="logo verde">Verde</p>
+        </div>
+        <div class="linha"></div>
+    </header>
+    <main class="entradaInfos">
+       <button onclick="Clec()" class="button">Iniciar Votação</button>
+       <button onclick="Cloc()" class="button rede">Encerrar Votação</button>
+    </main>
+            <div class="linha completa"></div>
+<script>
+function Clec(){
+    Swal.fire({
+  text: `A votação foi iniciada em: ${dia}/${mes}/${ano} as ${hora}:${minutos}:${segundos}`,
+  icon: 'info',
+  confirmButtonText: 'Confirmar'
+})
+}
+
+function Cloc(){
+    Swal.fire({
+  text: `A votação foi encerrada em: ${dia}/${mes}/${ano} as ${hora}:${minutos}:${segundos}`,
+  icon: 'info',
+  confirmButtonText: 'Confirmar'
+})
+}
+const dataAtual = new Date();
+const dia = dataAtual.getDate(); 
+const mes = dataAtual.getMonth() + 1;
+const ano = dataAtual.getFullYear(); 
+const hora = dataAtual.getHours(); 
+const minutos = dataAtual.getMinutes();
+const segundos = dataAtual.getSeconds(); 
+
+</script>
+</body>
+</html>
