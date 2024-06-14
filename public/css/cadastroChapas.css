@@ -104,6 +104,8 @@
   display: flex;
   flex-direction: row;
   margin-top: 50px;
+  align-items: center;
+  justify-content: center;
 }
 .cadastraDiv {
   width: 80%;
@@ -149,6 +151,8 @@
   color: #fff;
   font-size: 14px;
   font-family: "Montserrat";
+  position: relative;
+  bottom: 80px;
 }
 .textoI {
   font-family: "Montserrat";

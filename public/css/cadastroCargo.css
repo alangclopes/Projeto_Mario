@@ -21,13 +21,14 @@ body {
 }
 
 .verification {
-    margin-top: 20px;
     height: 50px;
     width: 200px;
     color: #fff;
-    background-color: green;
+    background-color: #00a811;
     font-size: 21px;
     border-radius: 5px;
+    border: none;
+    outline: none;
 }
 
 .verification:hover {
@@ -55,7 +56,7 @@ body {
 
 .forma {
     width: 100%;
-    height: 440px;
+    height: 340px;
     display: flex;
     flex-direction: row;
 }
@@ -84,7 +85,6 @@ body {
 
 .divOO {
     width: 50%;
-    height: 100%;
     display: flex;
     justify-content: center ;
 }
@@ -127,4 +127,19 @@ body {
     justify-content: center;
     font-family: "Montserrat";
     font-size: 14px;
+}
+.voltar{
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 7px;
+    background-color: #565656;
+    color: #fff;
+    font-family: 'Montserrat';
+    position: relative;
+    bottom: 60px;
+    right: 500px;
+    border: none;
+    outline: none;
+
 }

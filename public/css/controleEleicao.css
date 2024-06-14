@@ -64,3 +64,24 @@
 .rede:hover {
   background-color: rgb(221, 50, 50);
 }
+.voltar{
+  width: 100px;
+  height: 30px;
+  margin-left: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  background-color: #565656;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Montserrat';
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#volter{
+  color: #fff;
+  text-decoration: none;
+
+}

@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const chapaController = require("../controllers/chapaController");
+const candidatoController = require("../controllers/candidatoController");
 
-router.get("/create", chapaController.renderCreateChapa);
-router.post("/create", chapaController.createChapa);
+router.post("/create", candidatoController.createCandidato);
+router.get("/create", candidatoController.getAllCandidatos);
+router.get("/create", candidatoController.getCandidatoForm);
 
 module.exports = router;
