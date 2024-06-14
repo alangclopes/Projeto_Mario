@@ -154,3 +154,9 @@
 .completa{
     width: 99.7%;
 }
+.segunda{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}

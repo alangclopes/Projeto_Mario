@@ -6,12 +6,17 @@ async function getAll() {
 }
 
 async function add(eleicao) {
-  const { data, local } = eleicao;
-  const [result] = await pool.execute(
-    "INSERT INTO Eleicoes (data, local) VALUES (?, ?)",
-    [data, local]
-  );
-  return result.insertId;
+  const { data, local, nome } = eleicao;
+  try {
+    const [result] = await pool.execute(
+      "INSERT INTO Eleicoes (data, local, nome) VALUES (?, ?, ?)",
+      [data, local, nome]
+    );
+    return result.insertId;
+  } catch (error) {
+    console.error('Erro ao adicionar eleição:', error);
+    throw error;
+  }
 }
 
 module.exports = {

@@ -4,7 +4,7 @@ exports.createCandidato = async (req, res) => {
   const { nome, cpf, endereco } = req.body;
   try {
     await Candidato.create(nome, cpf, endereco);
-    res.redirect("/candidatos");
+    res.redirect("/dashboard");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erro ao cadastrar candidato");

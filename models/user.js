@@ -8,13 +8,13 @@ const User = {
     );
     return rows[0];
   },
-  findOneByCpf: async (cpf) => {
+  findByCpfAndPassword: async (cpf, senha) => {
     const [rows] = await pool.execute(
-      `SELECT * FROM users WHERE cpf = ?`,
-      [cpf]
+      `SELECT * FROM eleitores WHERE cpf = ? AND senha = ?`,
+      [cpf, senha]
     );
     return rows[0];
-  }
+  },
 };
 
 module.exports = User;

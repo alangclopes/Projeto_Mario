@@ -17,7 +17,7 @@ exports.createChapa = async (req, res) => {
       nome,
       eleicao_id,
     ]);
-    res.redirect("/chapas");
+    res.redirect("/dashboard");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erro ao criar chapa");

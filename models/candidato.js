@@ -20,4 +20,5 @@ const Candidato = {
   },
 };
 
+
 module.exports = Candidato;
