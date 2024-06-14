@@ -25,7 +25,7 @@ app.use(
   session({ secret: "your_secret_key", resave: false, saveUninitialized: true })
 );
 
-app.use("/eleitores", eleitorRoutes);
+app.use("/eleitor", eleitorRoutes);
 app.use("/candidatos", candidatoRoutes);
 app.use("/chapas", chapaRoutes);
 app.use("/votacoes", votacaoRoutes);
@@ -42,5 +42,5 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Servidor rodando na porta http://localhost:${PORT}`);
 });

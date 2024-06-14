@@ -1,11 +1,9 @@
 const Cargo = require("../models/cargo");
 
-// Função para exibir o formulário de cadastro de cargos
 exports.showForm = (req, res) => {
   res.render("cargo/index");
 };
 
-// Função para processar o cadastro de um novo cargo
 exports.addCargo = async (req, res) => {
   const { cargo, eleicao_id } = req.body;
   
@@ -20,14 +18,13 @@ exports.addCargo = async (req, res) => {
     };
 
     const cargoId = await Cargo.add(newCargo);
-    res.redirect("/cargos"); // Redireciona para a lista de cargos após o cadastro
+    res.redirect("/cargos"); 
   } catch (error) {
     console.error(error);
     res.status(500).send("Erro ao cadastrar o cargo.");
   }
 };
 
-// Função para listar todos os cargos
 exports.listCargos = async (req, res) => {
   try {
     const cargos = await Cargo.getAll();

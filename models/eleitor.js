@@ -1,10 +1,10 @@
 const pool = require('../config/db');
 
 const Eleitor = {
-    create: async (nome, cpf, endereco, senha) => {
+    create: async (nome, cpf, predio, andar, numero_apartamento, senha) => {
         const [result] = await pool.execute(
-            'INSERT INTO Eleitores (nome, cpf, endereco, senha) VALUES (?, ?, ?, ?)',
-            [nome, cpf, endereco, senha]
+            'INSERT INTO Eleitores (nome, cpf, predio, andar, numero_apartamento, senha) VALUES (?, ?, ?, ?, ?, ?)',
+            [nome, cpf, predio, andar, numero_apartamento, senha]
         );
         return result.insertId;
     },

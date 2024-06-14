@@ -2,11 +2,11 @@ const Eleitor = require("../models/eleitor");
 const bcrypt = require("bcrypt");
 
 exports.createEleitor = async (req, res) => {
-  const { nome, cpf, endereco, senha } = req.body;
+  const { nome, cpf, predio, andar, numero_apartamento, senha } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(senha, 10);
-    await Eleitor.create(nome, cpf, endereco, hashedPassword);
-    res.redirect("/eleitores");
+    await Eleitor.create(nome, cpf, predio, andar, numero_apartamento, hashedPassword);
+    res.redirect("/dashboard");
   } catch (error) {
     console.error(error);
     res.status(500).send("Erro ao cadastrar eleitor");

@@ -7,6 +7,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/candidatoChapa.css">
+    <script>
+        window.onload = async function() {
+            try {
+                const response = await fetch('/candidatoChapa/opcoes');
+                const { chapas, cargos } = await response.json();
+
+                const chapaSelect = document.getElementById('chapa');
+                const cargoSelect = document.getElementById('cargo');
+
+                chapas.forEach(chapa => {
+                    const option = document.createElement('option');
+                    option.value = chapa.nome;
+                    option.textContent = chapa.nome;
+                    chapaSelect.appendChild(option);
+                });
+
+                cargos.forEach(cargo => {
+                    const option = document.createElement('option');
+                    option.value = cargo.cargo;
+                    option.textContent = cargo.cargo;
+                    cargoSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar opções:', error);
+            }
+        };
+    </script>
 </head>
 <body>
     <header class="headerd">
@@ -18,43 +45,41 @@
     </header>
     <main class="entradaInfos">
         <p class="nomePagina">Cadastro de candidato em chapa</p>
-        <form  method="post" action="">
+        <form method="post" action="/candidatoChapa/formulario">
 
             <div class="form">
-            <div class="metadeForm"> 
-                <div class="info">
-                    <label for="Endereco" class="labelEsp">Candidato</label>
-                    <input type="text" class="desing" id="Candidato" placeholder="Insira o nome do candidato">
+                <div class="metadeForm"> 
+                    <div class="info">
+                        <label for="candidato" class="labelEsp">Candidato</label>
+                        <input type="text" name="candidato" class="desing" id="candidato" placeholder="Insira o nome do candidato">
+                    </div>
                 </div>
-            </div>
 
-            <div class="metadeForme">
-
-                <div class="info">
-                    <label for="Endereco" class="labelEsp">Chapa</label>
-                    <input type="text" class="desing" id="Chapa" placeholder="Insira o nome da chapa">
+                <div class="metadeForme">
+                    <div class="info">
+                        <label for="chapa" class="labelEsp">Chapa</label>
+                        <select name="chapa" id="chapa" class="desing">
+                        </select>
+                    </div>
+                    <div class="info">
+                        <label for="cargo" class="labelEsp">Cargo</label>
+                        <select name="cargo" id="cargo" class="desing">
+                        </select>
+                    </div>
                 </div>
-                <div class="info">
-                    <label for="Endereco" class="labelEsp">Cargo</label>
-                    <input type="text" class="desing" id="Cargo" placeholder="Insira insira o cargo">
-                </div>
-                
-            </div>
             </div>
 
             <div class="cadastraDiv">
                 <button class="cadastrar">Cadastrar candidato</button>
-                <p class="textoI">Ao realizar o cadastro você estará sujeito a nossos  Termos de eleição</p>
+                <p class="textoI">Ao realizar o cadastro você estará sujeito a nossos Termos de eleição</p>
             </div>
         </form>
-        </main>
-            <div class="botaoDiv">
-                <form method="get" action="/dashboard">
-                    <button class="voltar">Voltar</button>
-                </form>
-                
-                </div>
-            <div class="linha completa"></div>
-
+    </main>
+    <div class="botaoDiv">
+        <form method="get" action="/dashboard">
+            <button class="voltar">Voltar</button>
+        </form>
+    </div>
+    <div class="linha completa"></div>
 </body>
 </html>

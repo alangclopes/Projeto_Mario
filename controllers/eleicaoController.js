@@ -7,9 +7,9 @@ exports.showForm = (req, res) => {
 
 // Função para processar o cadastro de uma nova eleição
 exports.addEleicao = async (req, res) => {
-  const { data, local } = req.body;
+  const { data, local, nome} = req.body;
 
-  if (!data || !local) {
+  if (!data || !local || !nome) {
     return res.status(400).send("Por favor, preencha todos os campos.");
   }
 
@@ -17,10 +17,11 @@ exports.addEleicao = async (req, res) => {
     const newEleicao = {
       data,
       local,
+      nome,
     };
 
     const eleicaoId = await Eleicao.add(newEleicao);
-    res.redirect("/eleicoes"); // Redireciona para a lista de eleições após o cadastro
+    res.redirect("/dashboard"); 
   } catch (error) {
     console.error(error);
     res.status(500).send("Erro ao cadastrar a eleição.");
